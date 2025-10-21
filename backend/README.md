@@ -143,6 +143,55 @@ ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8000
 | PUT    | `/:id/status`      | Update order status   | Admin         |
 | GET    | `/admin/stats`     | Get order statistics  | Admin         |
 
+### Admin Dashboard (`/api/admin`)
+
+| Method | Endpoint              | Description                     | Auth Required |
+|--------|-----------------------|---------------------------------|---------------|
+| GET    | `/dashboard`          | Dashboard statistics & metrics  | Admin         |
+| GET    | `/users`              | List all users (filtered)       | Admin         |
+| GET    | `/users/:id`          | Get user details & statistics   | Admin         |
+| PUT    | `/users/:id`          | Update user (role, status)      | Admin         |
+| PUT    | `/users/:id/deactivate` | Deactivate user account       | Admin         |
+| GET    | `/orders`             | List all orders (advanced filters) | Admin      |
+| GET    | `/inventory`          | Inventory report (stock levels) | Admin         |
+| GET    | `/inventory/logs`     | Inventory change logs           | Admin         |
+| PUT    | `/products/bulk`      | Bulk update products            | Admin         |
+| GET    | `/analytics/sales`    | Sales analytics & reports       | Admin         |
+
+**Dashboard Statistics** includes:
+- Order statistics (total, by status, avg value)
+- User statistics (total, verified, active)
+- Product statistics (total, active, stock status)
+- Revenue metrics (total, tax, shipping)
+- Recent orders list
+- Top selling products
+- Revenue by day (last 30 days)
+
+**User Management** features:
+- Filter by role, status, email verification
+- Search by email/name
+- View user order history and statistics
+- Update user roles and permissions
+- Deactivate/reactivate accounts
+
+**Order Management** features:
+- Advanced filtering (status, payment, date, amount)
+- Search by order number, email, name
+- Bulk operations support
+- Export capabilities
+
+**Inventory Management** features:
+- Stock status monitoring (in stock, low stock, out of stock)
+- Inventory change logs with audit trail
+- Bulk product updates
+- Stock level alerts
+
+**Analytics & Reports** include:
+- Revenue over time (daily/weekly/monthly)
+- Sales by category
+- Top customers by spend
+- Order trends and patterns
+
 ## Scripts
 
 ```bash

@@ -11,6 +11,7 @@ import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
 import cartRoutes from './routes/cartRoutes';
 import orderRoutes from './routes/orderRoutes';
+import adminRoutes from './routes/adminRoutes';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import { apiLimiter } from './middleware/rateLimiter';
 
@@ -88,10 +89,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/admin', adminRoutes);
 // Add more routes here:
 // app.use('/api/payments', paymentRoutes);
 // app.use('/api/users', userRoutes);
-// app.use('/api/admin', adminRoutes);
 
 // 404 handler
 app.use(notFound);
