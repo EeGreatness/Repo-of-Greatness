@@ -350,23 +350,36 @@ npm run dev
 - `POST /api/auth/reset-password` - Reset password
 - `POST /api/auth/verify-email` - Verify email address
 
-### Products (To be implemented)
-- `GET /api/products` - List all products
-- `GET /api/products/:id` - Get product details
+### Products ✅
+- `GET /api/products` - List all products (with filters, search, pagination)
+- `GET /api/products/:id` - Get product by ID or slug
 - `POST /api/products` - Create product (admin)
 - `PUT /api/products/:id` - Update product (admin)
 - `DELETE /api/products/:id` - Delete product (admin)
 
-### Orders (To be implemented)
+### Shopping Cart ✅
+- `GET /api/cart` - Get current cart
+- `POST /api/cart/items` - Add item to cart
+- `PUT /api/cart/items/:productId` - Update item quantity
+- `DELETE /api/cart/items/:productId` - Remove item
+- `DELETE /api/cart` - Clear cart
+- `POST /api/cart/validate` - Validate cart before checkout
+- `POST /api/cart/sync` - Sync guest cart with user cart (on login)
+
+### Orders ✅
 - `GET /api/orders` - List user orders
 - `GET /api/orders/:id` - Get order details
-- `POST /api/orders` - Create order
-- `PUT /api/orders/:id/cancel` - Cancel order
+- `POST /api/orders` - Create order with payment processing
+- `PUT /api/orders/:id/cancel` - Cancel order and restore inventory
+- `PUT /api/orders/:id/status` - Update order status (admin)
+- `GET /api/orders/admin/stats` - Get order statistics (admin)
 
-### Payment (To be implemented)
-- `POST /api/payments/create-intent` - Create payment intent
-- `POST /api/payments/confirm` - Confirm payment
-- `POST /api/payments/webhook` - Stripe webhook
+### Payment ✅
+- Integrated with order creation
+- Stripe payment intent generation
+- Automatic inventory management
+- Order confirmation emails
+- Refund support
 
 ## Database Schema
 
@@ -566,25 +579,28 @@ Report bugs or request features via GitHub Issues
 - Checkout flow with validation
 - Responsive design
 
-### Backend: 🚧 Core Complete, Endpoints In Progress
-- ✅ Authentication system
+### Backend: ✅ MVP Complete
+- ✅ Authentication system (JWT with refresh tokens)
 - ✅ Database schema and migrations
 - ✅ Payment integration (Stripe)
 - ✅ Email service (SendGrid)
 - ✅ Security and rate limiting
 - ✅ Docker and deployment configs
-- 🚧 Product endpoints (structure ready)
-- 🚧 Order endpoints (structure ready)
-- 🚧 Cart endpoints (structure ready)
+- ✅ Product endpoints (CRUD with caching)
+- ✅ Order endpoints (full order lifecycle)
+- ✅ Cart endpoints (guest and authenticated)
+- ✅ Inventory management
+- ✅ Order confirmation emails
 
-### Next Steps
-1. Complete remaining API endpoints (products, orders, cart)
-2. Add comprehensive test coverage
-3. Set up Swagger/OpenAPI documentation
-4. Deploy to staging environment
-5. Security audit
-6. Load testing
-7. Production deployment
+### Next Steps for Production
+1. Add comprehensive test coverage (unit, integration, e2e)
+2. Set up Swagger/OpenAPI documentation
+3. Implement additional admin features (dashboard, analytics)
+4. Add product reviews and ratings endpoints
+5. Deploy to staging environment
+6. Security audit and penetration testing
+7. Load testing and performance optimization
+8. Production deployment with CI/CD
 
 ---
 
